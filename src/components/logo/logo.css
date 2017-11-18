@@ -1,0 +1,19 @@
+.logo-wrapper {
+  text-align: center;
+}
+
+.logo-wrapper.small {
+  padding: 1rem;
+}
+
+.logo-wrapper.big {
+  padding: 2rem;
+}
+
+.small .logo {
+  width: 10rem;
+}
+
+.big .logo {
+  width: 20rem;
+}

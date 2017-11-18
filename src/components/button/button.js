@@ -18,7 +18,7 @@ class Button extends Component {
 
   render() {
     return (
-      <button onClick={this.handleClick}>
+      <button className='cta' onClick={this.handleClick}>
         Przejdź do aplikacji
       </button>
     );
