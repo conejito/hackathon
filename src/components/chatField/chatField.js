@@ -14,6 +14,7 @@ class ChatField extends Component {
     this.handleMic = this.handleMic.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
   }
 
   handleInput(event) {
@@ -34,6 +35,10 @@ class ChatField extends Component {
     }
   }
 
+  handleFocus() {
+    this.refs.input.select();
+  }
+
   handleMic() {
 
   }
@@ -48,7 +53,9 @@ class ChatField extends Component {
                  name="question"
                  value={this.state.question}
                  onChange={this.handleInput}
-                 onKeyPress={this.handleKeyPress} />
+                 onKeyPress={this.handleKeyPress}
+                 onFocus={this.handleFocus}
+                 ref='input' />
           <img src={mic} className='icon' onClick={this.handleMic} />
         </div>
         <div className='line' />
