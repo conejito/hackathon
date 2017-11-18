@@ -5,11 +5,22 @@
   "hosting": {
     "public": "build",
     "ignore": [
-      "firebase.json",
+      "**/node_modules/**",
       "**/.*",
-      "**/node_modules/**"
+      "node_modules/**",
+      "**/public/**",
+      "**/src/**",
+      ".gitignore",
+      "firebase.json",
+      "package.json",
+      "README.md",
+      "yarn.lock"
     ],
     "rewrites": [
+      {
+        "source": "/helloworld",
+        "function": "helloWorld"
+      },
       {
         "source": "**",
         "destination": "/index.html"
