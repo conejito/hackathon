@@ -7,7 +7,7 @@
 }
 
 .logo-wrapper.big {
-  padding: 2.4rem 0 3rem;
+  padding: 2.4rem 0 4rem;
 }
 
 .small .logo {
@@ -15,5 +15,5 @@
 }
 
 .big .logo {
-  width: 18rem;
+  width: 16rem;
 }
