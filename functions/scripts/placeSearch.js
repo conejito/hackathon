@@ -28,8 +28,6 @@ const createUrl = (parameters, nextPage) => {
 
 
 const collect = async (cityLocations, nextPageToken = '') => {
-  // let shouldContinue = true;
-
   const parameters = {
     'baseUrl': 'https://maps.googleapis.com/maps/api/place/nearbysearch/',
     'type': 'json',

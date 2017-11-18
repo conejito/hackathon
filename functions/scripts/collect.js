@@ -22,9 +22,29 @@ const explorer = async () => {
     nextPageToken = data.nextPageToken;
 
     results.forEach( (e) => {
-      console.log(e.name);
+      console.log(e);
       for(let i =0; i < 10000000000/20; i++){}; // Wait for Google Api
       db.insert(`places/${e.id}`, e);
+
+      const address = e.vicinity.split(',');
+      const city = address[address.length - 1].trim();
+
+      if (e.name.toLowerCase().includes('hostel')) {
+        e.types.length = 0;
+        e.types.push('hostel');
+      }
+      if (e.name.toLowerCase().includes('hotel')) {
+        e.types.length = 0;
+        e.types.push('hostel');
+      }
+      if (e.name.toLowerCase().includes('pizza')) {
+        e.types.length = 0;
+        e.types.push('pizzeria');
+      }
+
+      e.types.forEach( (category) => {
+        db.insert(`cities/${city}/categories/${category}/${e.id}`, e.name);
+      })
     });
 
   } while( cs++ < 2 );
