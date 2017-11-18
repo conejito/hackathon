@@ -10,15 +10,10 @@ class App extends Component {
     super(props);
     this.checkCookie = this.checkCookie.bind(this);
     this.setVisited = this.setVisited.bind(this);
-    this.resize = this.resize.bind(this);
 
     this.state = {
       visited: this.checkCookie()
     }
-  }
-
-  componentDidMount() {
-    this.resize();
   }
 
   checkCookie() {
@@ -31,11 +26,6 @@ class App extends Component {
     this.setState({
       visited: value
     });
-  }
-
-  resize() {
-    const height = window.innerHeight;
-    this.refs.app.style.height = height + "px";
   }
 
   render() {
