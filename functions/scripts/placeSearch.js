@@ -11,27 +11,24 @@ const createUrl = (parameters, nextPage) => {
   if (parameters['type']!='') {
     url += (parameters['type'] + '?');
   }
-  if (parameters['location']!='') {
+  if (!nextPage && parameters['location']!='') {
     url += ('&location=' + parameters['location']);
   }
-  if (parameters['radius']!='') {
+  if (!nextPage && parameters['radius']!='') {
     url += ('&radius=' + parameters['radius']);
   }
   if (parameters['key']!='') {
     url += ('&key=' + parameters['key']);
   }
   if (nextPage) {
-    url += ('&next_page_token=' + nextPage);
+    url += ('&pagetoken=' + decodeURIComponent(nextPage) );
   }
-  console.log(nextPage);
   return url;
 };
 
 
-const collect = async (cityLocations, pageLimit = 5) => {
-  let shouldContinue = true;
-  let newPageToken = '';
-  let currentPage = 1;
+const collect = async (cityLocations, nextPageToken = '') => {
+  // let shouldContinue = true;
 
   const parameters = {
     'baseUrl': 'https://maps.googleapis.com/maps/api/place/nearbysearch/',
@@ -41,16 +38,13 @@ const collect = async (cityLocations, pageLimit = 5) => {
     'key': 'AIzaSyB0H_yqojwEFW99CxmdHYNkROoGAs2qrz4'
   };
 
-  while(currentPage++ <= pageLimit && shouldContinue) {
-    newPageToken = await fetch(createUrl(parameters, nextPageToken))
-     .then( data => data.json() )
-     .then( (data) => {
-       if(!data.next_page_token) {
-         shouldContinue = false;
-       }
-       return data.next_page_token;
-     });
-  }
-}
+  const newData = await fetch(createUrl(parameters, nextPageToken))
+   .then( data => data.json() )
+   .then( (data) => {
+     return data;
+   });
+
+  return { results: newData.results, nextPageToken: newData.next_page_token };
+};
 
 module.exports = collect;

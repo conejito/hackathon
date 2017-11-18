@@ -1,0 +1,33 @@
+const db = require('./database');
+const placeExplorer = require('./placeSearch');
+
+const cityLocations = {
+  'poznan': {
+  'latitude': '52.41',
+  'longitude': '16.93'
+  }
+};
+
+const explorer = async () => {
+  let nextPageToken = '';// 'CpQCDwEAAFU2N6yKN638gFVL0AFDWFCvrmKW3lPfFTf843_-eQebRX_1xliYhNbcFJPK4jEVLWzEzsZH7QhpIS__vy-eZTa-NJE6qsGv6W7LeFVu-ENRD_hCFgTy-YxXEcHIX7CnfV3qgSMRZJ1mTlmC2Wt4yoOT2N6IHLZPAoGIXAsPUfc3sFVkrL_KWgyO92BcPSklmXXFXVMEsb2NhlIn9MeaMTe92CEKKvodk7T8_nr6Ue6hmmSS_AgKVLOEqRgLC5DbIuMk36_dTT-n8QhBO24pZvosHr1sNuAXAUzyfitcgAGWoVVPzn8qsfhSXRUN-X4-QWNOfI7Xq9yA5RKILiWOhV6Xd3p7nOrPInxD9SmuuoozEhDQOQqMECC7s-iGB4CfOCamGhSNmpGOk_vYvomsJ1tYZSP_Tszk0w';
+  let cs = 0;
+  do {
+
+    const data = await placeExplorer(cityLocations, nextPageToken);
+
+    const results = data.results;
+    if(results.length==0) {
+      console.log(data);
+    }
+    nextPageToken = data.nextPageToken;
+
+    results.forEach( (e) => {
+      console.log(e.name);
+      for(let i =0; i < 10000000000/20; i++){}; // Wait for Google Api
+      db.insert(`places/${e.id}`, e);
+    });
+
+  } while( cs++ < 2 );
+};
+
+explorer();
