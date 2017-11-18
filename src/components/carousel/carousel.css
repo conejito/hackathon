@@ -7,6 +7,10 @@
   font-size: 1.6rem;
 }
 
+.carousel h3, .carousel p {
+  margin: 0.5em 0;
+}
+
 .carousel .slick-dots li {
   margin: 0 15px;
 }
