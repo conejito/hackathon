@@ -11,3 +11,13 @@ button {
   font-family: inherit;
   border: none;
 }
+
+input {
+  font-family: inherit;
+  border: none;
+  padding-bottom: 0.1em;
+}
+
+input:focus {
+  outline: none;
+}
