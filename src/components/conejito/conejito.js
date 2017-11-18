@@ -3,6 +3,11 @@ import './conejito.css';
 import conejito from './conejito.png';
 import conejitoBag from './conejitoBag.png';
 import conejitoSad from './conejitoSad.png';
+import conejitoBeer from './conejitoBeer.png';
+import conejitoEat from './conejitoEat.png';
+import conejitoFootball from './conejitoFootball.png';
+import conejitoFrance from './conejitoFrance.png';
+import conejitoPopcorn from './conejitoPopcorn.png';
 
 
 class Conejito extends Component {
@@ -16,10 +21,18 @@ class Conejito extends Component {
   getImage() {
     this.img = conejito;
 
-    if (this.props.type === 'bag') {
-      this.img = conejitoBag;
-    } else if (this.props.type === 'sad') {
-      this.img = conejitoSad;
+    const map = {
+      "bag": conejitoBag,
+      "sad": conejitoSad,
+      "beer": conejitoBeer,
+      "eat": conejitoEat,
+      "football": conejitoFootball,
+      "france": conejitoFrance,
+      "popcorn": conejitoPopcorn
+    }
+
+    if (this.props.type in map) {
+      this.img = map[this.props.type]
     }
   }
 
