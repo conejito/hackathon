@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './chatField.css';
 import mic from './mic.svg';
-
+import {ApiAiClient} from "api-ai-javascript";
 
 class ChatField extends Component {
   constructor(props) {
@@ -26,6 +26,11 @@ class ChatField extends Component {
     if (event.key === 'Enter') {
       this.props.setSearching(true);
       this.props.setQuestion(this.state.question);
+
+      const client = new ApiAiClient({accessToken: '868aa2de69c344f08e483fb6c59c6dea'})
+        .textRequest( this.state.question )
+        .then((response) => { console.log(response); })
+        .catch((error) => { console.log(error); })
     }
   }
 
@@ -41,7 +46,7 @@ class ChatField extends Component {
                  placeholder="Masz jakieś pytanie?"
                  type="text"
                  name="question"
-                 value={this.state.username}
+                 value={this.state.question}
                  onChange={this.handleInput}
                  onKeyPress={this.handleKeyPress} />
           <img src={mic} className='icon' onClick={this.handleMic} />
