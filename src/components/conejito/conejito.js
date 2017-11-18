@@ -8,6 +8,7 @@ import conejitoEat from './conejitoEat.png';
 import conejitoFootball from './conejitoFootball.png';
 import conejitoFrance from './conejitoFrance.png';
 import conejitoPopcorn from './conejitoPopcorn.png';
+import conejitoLoading from './conejitoLoading.gif';
 
 
 class Conejito extends Component {
@@ -28,7 +29,8 @@ class Conejito extends Component {
       "eat": conejitoEat,
       "football": conejitoFootball,
       "france": conejitoFrance,
-      "popcorn": conejitoPopcorn
+      "popcorn": conejitoPopcorn,
+      "loading": conejitoLoading
     }
 
     if (this.props.type in map) {
