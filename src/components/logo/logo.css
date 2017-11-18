@@ -3,11 +3,11 @@
 }
 
 .logo-wrapper.small {
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
 .logo-wrapper.big {
-  padding: 2.4rem;
+  padding: 2.4rem 0 3rem;
 }
 
 .small .logo {
