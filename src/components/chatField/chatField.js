@@ -8,17 +8,25 @@ class ChatField extends Component {
     super(props);
 
     this.state = {
-      question: '',
+      question: this.props.question
     };
 
     this.handleMic = this.handleMic.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   handleInput(event) {
     this.setState({
       [event.target.name]: event.target.value
     });
+  }
+
+  handleKeyPress(event) {
+    if (event.key === 'Enter') {
+      this.props.setSearching(true);
+      this.props.setQuestion(this.state.question);
+    }
   }
 
   handleMic() {
@@ -34,7 +42,8 @@ class ChatField extends Component {
                  type="text"
                  name="question"
                  value={this.state.username}
-                 onChange={this.handleInput} />
+                 onChange={this.handleInput}
+                 onKeyPress={this.handleKeyPress} />
           <img src={mic} className='icon' onClick={this.handleMic} />
         </div>
         <div className='line' />

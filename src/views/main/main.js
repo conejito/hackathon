@@ -11,9 +11,11 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.setSearching = this.setSearching.bind(this);
+    this.setQuestion = this.setQuestion.bind(this);
 
     this.state = {
-      searching: false
+      searching: false,
+      question: ''
     };
   }
 
@@ -23,17 +25,31 @@ class Main extends Component {
     });
   }
 
+  setQuestion(value) {
+    this.setState({
+      question: value
+    });
+  }
+
   render() {
     return (
       <div className='main'>
         {
           this.state.searching ?
-            <LoadingOverlay />
+            <div>
+              <LoadingOverlay />
+              <Logo variant='small' />
+              <ChatField question=''
+                         setSearching={this.setSearching}
+                         setQuestion={this.setQuestion} />
+            </div>
           :
             <div>
               <Conejito />
               <Logo variant='big' />
-              <ChatField setSearching={this.setSearching} />
+              <ChatField question=''
+                         setSearching={this.setSearching}
+                         setQuestion={this.setQuestion} />
               <Footer />
             </div>
         }
