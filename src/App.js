@@ -1,18 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Cookies from 'universal-cookie';
+import Landing from './views/landing/landing';
+import Main from './views/main/main';
 import './App.css';
 
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.checkCookie = this.checkCookie.bind(this);
+    this.setVisited = this.setVisited.bind(this);
+
+    this.state = {
+      visited: this.checkCookie()
+    }
+  }
+
+  checkCookie() {
+    const cookies = new Cookies();
+    const ret = cookies.get('visited');
+    return (ret === 'true');
+  }
+
+  setVisited(value=true) {
+    this.setState({
+      visited: value
+    });
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="app">
+        { this.state.visited ? <Main /> : <Landing setVisited={this.setVisited} /> }
       </div>
     );
   }

@@ -4,10 +4,13 @@
   "description": "",
   "private": true,
   "dependencies": {
-    "firebase-admin": "^5.5.0",
+    "api-ai-javascript": "^2.0.0-beta.21",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "react-scripts": "1.0.17"
+    "react-scripts": "1.0.17",
+    "react-slick": "^0.15.4",
+    "slick-carousel": "^1.8.1",
+    "universal-cookie": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
