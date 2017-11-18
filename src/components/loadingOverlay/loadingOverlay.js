@@ -10,7 +10,8 @@ class LoadingOverlay extends Component {
   render() {
     return (
       <div className="loadingOverlay">
-
+        <Conejito type="beer" />
+        <p>Daj mi chwilę...</p>
       </div>
     );
   }
