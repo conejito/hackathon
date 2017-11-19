@@ -94,7 +94,7 @@ class Main extends Component {
             <div>
               <LoadingOverlay />
               <Logo variant='small'/>
-              <ChatField question=''
+              <ChatField question={this.state.question}
                          setSearching={this.setSearching}
                          setQuestion={this.setQuestion}
                          getData={this.getData}/>

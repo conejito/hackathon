@@ -23,7 +23,7 @@ class ChatField extends Component {
   }
 
   handleKeyPress(event) {
-    if (event.key === 'Enter' && this.state.question != '') {
+    if (event.key === 'Enter' && this.state.question !== '') {
       this.props.setSearching(true);
       this.props.setQuestion(this.state.question);
       this.props.getData();
