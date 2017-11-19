@@ -12,6 +12,7 @@
 
 .chat-field .icon {
   width: 5rem;
+  cursor: pointer;
 }
 
 .line {

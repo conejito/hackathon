@@ -69,12 +69,12 @@ class Main extends Component {
       {
         type: 'result',
         data: {
-          name: "Fat Bob Burger",
+          name: "Fat Bob Burger", // name
           rating: 4.4,
           address: "Kramarska 21, 61-765 Poznań",
-          coords: {
-            lat: 21.31231,
-            long: 36.231331
+          location: {
+            lat: 21.31231, // geometry.location.lat
+            lng: 36.231331 // geometry.location.lng
           }
         }
       }
@@ -94,11 +94,11 @@ class Main extends Component {
             <div>
               <LoadingOverlay />
               <Logo variant='small'/>
-              <ChatField question=''
+              <ChatField question={this.state.question}
                          setSearching={this.setSearching}
                          setQuestion={this.setQuestion}
                          getData={this.getData}/>
-              <ResultFeed results={this.state.results}/>
+              <ResultFeed results={this.state.results} />
             </div>
             :
             <div>

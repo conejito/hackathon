@@ -10,7 +10,6 @@ class ChatField extends Component {
       question: this.props.question
     };
 
-    this.handleMic = this.handleMic.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
@@ -18,12 +17,13 @@ class ChatField extends Component {
 
   handleInput(event) {
     this.setState({
-      [event.target.name]: event.target.value
+      question: event.target.value
     });
+    this.props.setQuestion(event.target.value);
   }
 
   handleKeyPress(event) {
-    if (event.key === 'Enter' && this.state.question != '') {
+    if (event.key === 'Enter' && this.state.question !== '') {
       this.props.setSearching(true);
       this.props.setQuestion(this.state.question);
       this.props.getData();
@@ -33,10 +33,6 @@ class ChatField extends Component {
 
   handleFocus() {
     this.refs.input.select();
-  }
-
-  handleMic() {
-
   }
 
   render() {
@@ -52,7 +48,6 @@ class ChatField extends Component {
                  onKeyPress={this.handleKeyPress}
                  onFocus={this.handleFocus}
                  ref='input' />
-          <img src={mic} className='icon' onClick={this.handleMic} />
         </div>
         <div className='line' />
       </div>

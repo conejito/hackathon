@@ -3,7 +3,7 @@ import './result.css';
 import restaurant from './restaurant.svg';
 import Conejito from '../../components/conejito/conejito';
 import Map from '../../components/map/map';
-
+import Rating from '../../components/rating/rating';
 
 const Result = (props) => (
   <div>
@@ -17,7 +17,7 @@ const Result = (props) => (
       :
         <div className="result">
           <p className="name">{props.info.data.name}</p>
-          <p>{props.info.data.rating}</p>
+          <Rating data={props.info.data.rating}/>
           <p className='address'>{props.info.data.address}</p>
           <Map />
         </div>
