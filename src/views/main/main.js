@@ -55,7 +55,7 @@ class Main extends Component {
         return response.json();
       })
       .then(function (result) {
-        $this.handleNewData();
+        $this.handleNewData(result);
       })
       .catch(function (error) {
         console.log('Request failed', error);
