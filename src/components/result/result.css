@@ -1,12 +1,36 @@
 .answer {
   display: flex;
-  margin-bottom: 1rem;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
 }
 
 .answer .conejito {
   width: 10rem;
 }
 
-.result {
+.answer p {
+  font-size: 1.4rem;
+  text-align: left;
+  min-height: 3rem;
+  margin-left: 1.5rem;
+  width: 100%;
+}
 
+.result {
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
+  padding-top: 2rem;
+}
+
+.result p {
+  text-align: left;
+  margin: 0 2rem 0.5rem;
+  font-size: 1.4rem;
+}
+
+.result .address {
+  color: #666;
+  font-family: "NerisLight", sans-serif;
 }
