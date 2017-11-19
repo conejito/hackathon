@@ -83,7 +83,7 @@ class Main extends Component {
       next = {
         type: 'answer',
         data: {
-          response: data.result.fullfilment.speech
+          response: data.result.fulfillment.speech
         }
       };
     }
