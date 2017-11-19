@@ -21,7 +21,7 @@
   background: #fff;
   border-radius: 0.5rem;
   box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
-  padding-top: 2rem;
+  padding-top: 1.5rem;
 }
 
 .result p {
@@ -33,4 +33,9 @@
 .result .address {
   color: #666;
   font-family: "NerisLight", sans-serif;
+  margin-bottom: 0;
+}
+
+.result .name {
+  font-size: 1.8rem;
 }

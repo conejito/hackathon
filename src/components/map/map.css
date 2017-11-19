@@ -1,0 +1,15 @@
+.map .button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 1.5rem 0.5rem;
+}
+
+.map .button {
+  padding: 1rem 0.5rem;
+  color: #666;
+  background: transparent;
+}
+
+.map .icon {
+  margin-top: 0.3rem;
+}
