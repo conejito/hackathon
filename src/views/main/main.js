@@ -13,6 +13,7 @@ class Main extends Component {
     this.setSearching = this.setSearching.bind(this);
     this.setQuestion = this.setQuestion.bind(this);
     this.getData = this.getData.bind(this);
+    this.handleNewData = this.handleNewData.bind(this);
 
     this.state = {
       searching: false,
@@ -53,34 +54,40 @@ class Main extends Component {
         return response.json();
       })
       .then(function (result) {
-        console.log('amazing result:', result);
+        this.handleNewData();
       })
       .catch(function (error) {
         console.log('Request failed', error);
       });
+  }
 
-    const newResults = [
-      {
-        type: 'answer',
-        data: {
-          response: 'Już kicam po odpowiedź!'
-        }
-      },
-      {
+  handleNewData(data) {
+    let next = {};
+
+    if (data.result.place !== undefined) {
+      const place = data.result.place;
+      next = {
         type: 'result',
         data: {
-          name: "Fat Bob Burger", // name
-          rating: 4.4,
-          address: "Kramarska 21, 61-765 Poznań",
+          name: place.name,
+          rating: place.rating,
+          address: place.vicinity,
           location: {
-            lat: 21.31231, // geometry.location.lat
-            lng: 36.231331 // geometry.location.lng
+            lat: place.geometry.location.lat,
+            lng: place.geometry.location.lng
           }
         }
-      }
-    ];
+      };
+    } else {
+      next = {
+        type: 'answer',
+        data: {
+          response: data.result.fullfilment.speech
+        }
+      };
+    }
 
-    const resultsCombined = [...newResults, ...this.state.results];
+    const resultsCombined = [next, ...this.state.results];
     this.setState({
       results: resultsCombined
     });
