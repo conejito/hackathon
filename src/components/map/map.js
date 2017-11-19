@@ -10,7 +10,7 @@ const MapIntegration = withScriptjs(withGoogleMap((props) =>
     defaultZoom={8}
     defaultCenter={{ lat: props.lat, lng: props.lng }}
   >
-    {props.isMarkerShown && <Marker position={{ props.lat: -34.397, props.lng: 150.644 }} />}
+    {props.isMarkerShown && <Marker position={{ lat: props.lat, lng: props.lng }} />}
   </GoogleMap>
 ));
 
