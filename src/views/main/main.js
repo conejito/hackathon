@@ -5,6 +5,7 @@ import Conejito from '../../components/conejito/conejito';
 import ChatField from '../../components/chatField/chatField';
 import LoadingOverlay from '../../components/loadingOverlay/loadingOverlay';
 import Footer from '../../components/footer/footer';
+import ResultFeed from '../../components/resultFeed/resultFeed';
 
 
 class Main extends Component {
@@ -12,10 +13,12 @@ class Main extends Component {
     super(props);
     this.setSearching = this.setSearching.bind(this);
     this.setQuestion = this.setQuestion.bind(this);
+    this.getData = this.getData.bind(this);
 
     this.state = {
       searching: false,
-      question: ''
+      question: '',
+      results: []
     };
   }
 
@@ -31,6 +34,39 @@ class Main extends Component {
     });
   }
 
+  getData() {
+     /*
+     Tu się trzeba wjebać i przetworzyć do takiej formy
+     Dodatkowo ważna jest dla mnie kolejność - najpierw answer, potem result
+     */
+
+    const newResults = [
+      {
+        type: 'answer',
+        data: {
+          response: 'Już kicam po odpowiedź!'
+        }
+      },
+      {
+        type: 'result',
+        data: {
+          name: "Fat Bob Burger",
+          rating: 4.4,
+          address: "Kramarska 21, 61-765 Poznań",
+          coords: {
+            lat: 21.31231,
+            long: 36.231331
+          }
+        }
+      }
+    ];
+
+    const resultsCombined = [...newResults, ...this.state.results];
+    this.setState({
+      results: resultsCombined
+    });
+  }
+
   render() {
     return (
       <div className='main'>
@@ -41,7 +77,9 @@ class Main extends Component {
               <Logo variant='small' />
               <ChatField question=''
                          setSearching={this.setSearching}
-                         setQuestion={this.setQuestion} />
+                         setQuestion={this.setQuestion}
+                         getData={this.getData} />
+              <ResultFeed results={this.state.results} />
             </div>
           :
             <div>
@@ -49,7 +87,8 @@ class Main extends Component {
               <Logo variant='big' />
               <ChatField question=''
                          setSearching={this.setSearching}
-                         setQuestion={this.setQuestion} />
+                         setQuestion={this.setQuestion}
+                         getData={this.getData} />
               <Footer />
             </div>
         }

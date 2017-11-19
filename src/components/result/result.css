@@ -1,0 +1,12 @@
+.answer {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.answer .conejito {
+  width: 10rem;
+}
+
+.result {
+
+}

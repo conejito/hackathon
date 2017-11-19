@@ -27,6 +27,7 @@ class ChatField extends Component {
     if (event.key === 'Enter') {
       this.props.setSearching(true);
       this.props.setQuestion(this.state.question);
+      this.props.getData();
       this.refs.input.blur();
 
       const client = new ApiAiClient({accessToken: '868aa2de69c344f08e483fb6c59c6dea'})
