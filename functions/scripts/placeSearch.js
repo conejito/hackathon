@@ -31,7 +31,7 @@ const collect = async (cityLocations, nextPageToken = '') => {
   const parameters = {
     'baseUrl': 'https://maps.googleapis.com/maps/api/place/nearbysearch/',
     'type': 'json',
-    'location': cityLocations['poznan']['latitude'] + ',' + cityLocations['poznan']['longitude'],
+    'location': cityLocations['position']['latitude'] + ',' + cityLocations['position']['longitude'],
     'radius': getRadius(261850000),
     'key': 'AIzaSyB0H_yqojwEFW99CxmdHYNkROoGAs2qrz4'
   };

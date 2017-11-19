@@ -1,15 +1,16 @@
 const Database = require('./database');
 const db = new Database();
 const placeExplorer = require('./placeSearch');
+const createDivisions = require('./createDivisions');
 
-const cityLocations = {
-  'poznan': {
-  'latitude': '52.41',
-  'longitude': '16.93'
-  }
-};
+// const cityLocations = {
+//   'position': {
+//     'latitude': '52.41',
+//     'longitude': '16.93'
+//   }
+// };
 
-const explorer = async () => {
+const explorer = async (cityLocations) => {
   let nextPageToken = '';// 'CpQCDwEAAFU2N6yKN638gFVL0AFDWFCvrmKW3lPfFTf843_-eQebRX_1xliYhNbcFJPK4jEVLWzEzsZH7QhpIS__vy-eZTa-NJE6qsGv6W7LeFVu-ENRD_hCFgTy-YxXEcHIX7CnfV3qgSMRZJ1mTlmC2Wt4yoOT2N6IHLZPAoGIXAsPUfc3sFVkrL_KWgyO92BcPSklmXXFXVMEsb2NhlIn9MeaMTe92CEKKvodk7T8_nr6Ue6hmmSS_AgKVLOEqRgLC5DbIuMk36_dTT-n8QhBO24pZvosHr1sNuAXAUzyfitcgAGWoVVPzn8qsfhSXRUN-X4-QWNOfI7Xq9yA5RKILiWOhV6Xd3p7nOrPInxD9SmuuoozEhDQOQqMECC7s-iGB4CfOCamGhSNmpGOk_vYvomsJ1tYZSP_Tszk0w';
   let cs = 0;
   do {
@@ -36,7 +37,7 @@ const explorer = async () => {
       }
       if (e.name.toLowerCase().includes('hotel')) {
         e.types.length = 0;
-        e.types.push('hostel');
+        e.types.push('hotel');
       }
       if (e.name.toLowerCase().includes('pizza')) {
         e.types.length = 0;
@@ -51,4 +52,14 @@ const explorer = async () => {
   } while( cs++ < 2 );
 };
 
-explorer();
+let i = 0;
+createDivisions.divisionsCenter(52.25, 16.58, 12, 12, 9131.9)
+  .forEach( (array) => {
+    array.forEach( (position) => {
+      if(i<3){
+        console.log(position);
+        explorer(position);
+      }
+      i++;
+    });
+  });

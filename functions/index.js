@@ -21,13 +21,20 @@ exports.webhook = functions.https.onRequest((request, response) => {
 });
 
 exports.message = functions.https.onRequest((request, response) => {
-  const request = dialogflow.textRequest(request.body.text, {
-    sessionId: request.body.id
+  const message = JSON.parse(request.body);
+  console.log(message.text, message.id);
+  const query = dialogflow.textRequest(message.text, {
+    sessionId: message.id
   });
 
-  request.on('response', (data) => {
+  query.on('response', (data) => {
     console.log('response', data);
-    request.end();
     response.send(data);
   });
+
+  query.on('error', (error) => {
+    console.log('error', error);
+  });
+
+  query.end();
 });
