@@ -48,7 +48,7 @@ class Map extends Component {
                onClick={this.handleExpanding} />
         </div>
         <div className={this.state.expanded ? "map-wrapper-expanded" : "map-wrapper-hidden"}>
-          <MapIntegration isMarkerShown lat={this.props.lat} lng={this.props.lng}
+          <MapIntegration isMarkerShown lat={parseFloat(this.props.lat)} lng={parseFloat(this.props.lng)}
             googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
             loadingElement={<div style={{ height: `100%` }} />}
             containerElement={<div style={{ height: `150px` }} />}
