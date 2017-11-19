@@ -1,9 +1,9 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
-const serviceAccount = require("../../serviceAccountKey.json");
+const serviceAccount = require('../serviceAccountKey.json');
 
 class Database {
-  constructor() {
+  constructor(config) {
     this.firebase = admin;
     this.firebase.initializeApp({
       credential: admin.credential.cert(serviceAccount),
@@ -57,4 +57,4 @@ class Database {
   }
 }
 
-module.exports = new Database();
+module.exports = Database;

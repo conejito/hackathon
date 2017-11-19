@@ -18,8 +18,12 @@
     ],
     "rewrites": [
       {
-        "source": "/helloworld",
-        "function": "helloWorld"
+        "source": "/webhook",
+        "function": "webhook"
+      },
+      {
+        "source": "/message",
+        "function": "message"
       },
       {
         "source": "**",

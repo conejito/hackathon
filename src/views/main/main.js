@@ -39,6 +39,26 @@ class Main extends Component {
      Tu się trzeba wjebać i przetworzyć do takiej formy
      Dodatkowo ważna jest dla mnie kolejność - najpierw answer, potem result
      */
+    fetch('/message', {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: encodeURIComponent(JSON.stringify({
+        id: 1,
+        text: this.state.question
+      }))
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (result) {
+        console.log(result);
+      })
+      .catch (function (error) {
+        console.log('Request failed', error);
+      });
 
     const newResults = [
       {

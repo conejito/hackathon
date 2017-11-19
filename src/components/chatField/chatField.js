@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './chatField.css';
 import mic from './mic.svg';
-import {ApiAiClient} from "api-ai-javascript";
 
 class ChatField extends Component {
   constructor(props) {
@@ -24,16 +23,11 @@ class ChatField extends Component {
   }
 
   handleKeyPress(event) {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' && this.state.question != '') {
       this.props.setSearching(true);
       this.props.setQuestion(this.state.question);
       this.props.getData();
       this.refs.input.blur();
-
-      const client = new ApiAiClient({accessToken: '868aa2de69c344f08e483fb6c59c6dea'})
-        .textRequest( this.state.question )
-        .then((response) => { console.log(response); })
-        .catch((error) => { console.log(error); })
     }
   }
 
