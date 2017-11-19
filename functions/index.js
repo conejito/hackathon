@@ -3,21 +3,32 @@ const functions = require('firebase-functions');
 
 const Database = require('./scripts/database');
 const db = new Database(functions.config().firebase);
+const answer = require('./scripts/answer');
 
 const apiai = require('apiai');
 const dialogflow = apiai('868aa2de69c344f08e483fb6c59c6dea');
 
-exports.helloWorld = functions.https.onRequest((request, response) => {
-  response.send("Hello from Firebase!");
-});
-
 exports.webhook = functions.https.onRequest((request, response) => {
   console.log(request.body);
 
-  let responseJson = {};
-  const responseToUser = 'Zawsze odpowiadam TAK';
-  responseJson.fulfillmentText = responseToUser;
-  response.json(responseJson);
+  answer(db, request.body)
+    .then( (result) => {
+      console.log(result);
+      response.send(result);
+    })
+
+  // answer(db, request.body)
+  //   .then( (data) => {
+  //     console.log('BEST RESULT', data);
+  //     response.send(
+  //       data
+  //     );
+  //   });
+
+  // let responseJson = {};
+  // const responseToUser = 'Zawsze odpowiadam TAK';
+  // responseJson.fulfillmentText = responseToUser;
+  // response.json(responseJson);
 });
 
 exports.message = functions.https.onRequest((request, response) => {
@@ -28,8 +39,11 @@ exports.message = functions.https.onRequest((request, response) => {
   });
 
   query.on('response', (data) => {
-    console.log('response', data);
-    response.send(data);
+    answer(db, data)
+      .then( (result) => {
+        console.log(result);
+        response.send(result);
+      })
   });
 
   query.on('error', (error) => {
