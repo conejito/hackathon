@@ -43,6 +43,7 @@ class Main extends Component {
 
     //console.log(data);
 
+    const $this = this;
     fetch('https://conejito.pl/message', {
       method: 'POST',
       body: JSON.stringify({
@@ -54,7 +55,7 @@ class Main extends Component {
         return response.json();
       })
       .then(function (result) {
-        this.handleNewData();
+        $this.handleNewData();
       })
       .catch(function (error) {
         console.log('Request failed', error);
