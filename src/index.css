@@ -13,6 +13,10 @@ button {
   cursor: pointer;
 }
 
+button:focus {
+  outline: none;
+}
+
 input {
   font-family: inherit;
   border: none;
