@@ -17,7 +17,7 @@ const Result = (props) => (
       :
         <div className="result">
           <p className="name">{props.info.data.name}</p>
-          <p> <Rating data={props.info.data.rating}/> </p>
+          <Rating data={props.info.data.rating}/>
           <p className='address'>{props.info.data.address}</p>
           <Map />
         </div>
