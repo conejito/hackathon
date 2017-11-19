@@ -216,6 +216,10 @@ ansi-regex@^2.0.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-2.1.1.tgz#c3b33ab5ee360d86e0e628f0468ae7ef27d654df"
 
+apiai@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/apiai/-/apiai-4.0.3.tgz#2d1aa3bad1fd9418deaada509369e84e011efaf8"
+
 aproba@^1.0.3:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/aproba/-/aproba-1.2.0.tgz#6802e6264efd18c790a1b0d517f0f2627bf2c94a"

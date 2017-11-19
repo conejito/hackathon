@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './chatField.css';
 import mic from './mic.svg';
-import {ApiAiClient} from "api-ai-javascript";
 
 class ChatField extends Component {
   constructor(props) {
