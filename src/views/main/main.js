@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './main.css';
 import Logo from '../../components/logo/logo';
 import Conejito from '../../components/conejito/conejito';
@@ -6,7 +6,6 @@ import ChatField from '../../components/chatField/chatField';
 import LoadingOverlay from '../../components/loadingOverlay/loadingOverlay';
 import Footer from '../../components/footer/footer';
 import ResultFeed from '../../components/resultFeed/resultFeed';
-
 
 class Main extends Component {
   constructor(props) {
@@ -22,7 +21,7 @@ class Main extends Component {
     };
   }
 
-  setSearching(value=true) {
+  setSearching(value = true) {
     this.setState({
       searching: value
     });
@@ -35,28 +34,28 @@ class Main extends Component {
   }
 
   getData() {
-     /*
+    /*
      Tu się trzeba wjebać i przetworzyć do takiej formy
      Dodatkowo ważna jest dla mnie kolejność - najpierw answer, potem result
      */
-    fetch('/message', {
-      method: 'post',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      },
-      body: encodeURIComponent(JSON.stringify({
+    //const data = {json: };
+
+    //console.log(data);
+
+    fetch('https://conejito.pl/message', {
+      method: 'POST',
+      body: JSON.stringify({
         id: 1,
         text: this.state.question
-      }))
+      })
     })
       .then(function (response) {
         return response.json();
       })
       .then(function (result) {
-        console.log(result);
+        console.log('amazing result:', result);
       })
-      .catch (function (error) {
+      .catch(function (error) {
         console.log('Request failed', error);
       });
 
@@ -94,21 +93,21 @@ class Main extends Component {
           this.state.searching ?
             <div>
               <LoadingOverlay />
-              <Logo variant='small' />
+              <Logo variant='small'/>
               <ChatField question=''
                          setSearching={this.setSearching}
                          setQuestion={this.setQuestion}
-                         getData={this.getData} />
-              <ResultFeed results={this.state.results} />
+                         getData={this.getData}/>
+              <ResultFeed results={this.state.results}/>
             </div>
-          :
+            :
             <div>
               <Conejito />
-              <Logo variant='big' />
+              <Logo variant='big'/>
               <ChatField question=''
                          setSearching={this.setSearching}
                          setQuestion={this.setQuestion}
-                         getData={this.getData} />
+                         getData={this.getData}/>
               <Footer />
             </div>
         }
