@@ -1,4 +1,5 @@
-const db = require('./database');
+const Database = require('./database');
+const db = new Database();
 const placeExplorer = require('./placeSearch');
 
 const cityLocations = {

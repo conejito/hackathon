@@ -22,6 +22,10 @@
         "function": "webhook"
       },
       {
+        "source": "/message",
+        "function": "message"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
