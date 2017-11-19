@@ -49,7 +49,7 @@ class Map extends Component {
         </div>
         <div className={this.state.expanded ? "map-wrapper-expanded" : "map-wrapper-hidden"}>
           <MapIntegration isMarkerShown lat={parseFloat(this.props.lat)} lng={parseFloat(this.props.lng)}
-            googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOCIXEy1E27DQ1oCeq07ix1Ob0Rb3aMQ0&callback=initMap"
             loadingElement={<div style={{ height: `100%` }} />}
             containerElement={<div style={{ height: `150px` }} />}
             mapElement={<div style={{ height: `100%` }} />} />
