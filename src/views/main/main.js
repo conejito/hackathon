@@ -98,7 +98,8 @@ class Main extends Component {
                          setSearching={this.setSearching}
                          setQuestion={this.setQuestion}
                          getData={this.getData}/>
-              <ResultFeed results={this.state.results}/>
+              <ResultFeed results={this.state.results}
+                         needsScrolling />
             </div>
             :
             <div>
