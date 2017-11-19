@@ -17,8 +17,9 @@ class ChatField extends Component {
 
   handleInput(event) {
     this.setState({
-      [event.target.name]: event.target.value
+      question: event.target.value
     });
+    this.props.setQuestion(event.target.value);
   }
 
   handleKeyPress(event) {
