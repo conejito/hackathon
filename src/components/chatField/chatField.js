@@ -10,7 +10,6 @@ class ChatField extends Component {
       question: this.props.question
     };
 
-    this.handleMic = this.handleMic.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
@@ -35,10 +34,6 @@ class ChatField extends Component {
     this.refs.input.select();
   }
 
-  handleMic() {
-
-  }
-
   render() {
     return (
       <div className='chat-field'>
@@ -52,7 +47,6 @@ class ChatField extends Component {
                  onKeyPress={this.handleKeyPress}
                  onFocus={this.handleFocus}
                  ref='input' />
-          <img src={mic} className='icon' onClick={this.handleMic} />
         </div>
         <div className='line' />
       </div>
