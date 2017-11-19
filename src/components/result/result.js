@@ -19,7 +19,7 @@ const Result = (props) => (
           <p className="name">{props.info.data.name}</p>
           <Rating data={props.info.data.rating}/>
           <p className='address'>{props.info.data.address}</p>
-          <Map />
+          <Map lat={props.info.data.location.lat} lat={props.info.data.location.lng}/>
         </div>
     }
   </div>
