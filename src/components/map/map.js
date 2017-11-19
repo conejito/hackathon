@@ -7,7 +7,7 @@ import more from './more.svg';
 
 const MapIntegration = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
-    defaultZoom={8}
+    defaultZoom={16}
     defaultCenter={{ lat: props.lat, lng: props.lng }}
   >
     {props.isMarkerShown && <Marker position={{ lat: props.lat, lng: props.lng }} />}
