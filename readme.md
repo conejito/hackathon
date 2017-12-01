@@ -6,7 +6,8 @@ Conejito nie ma zamiaru przebywać całe życie w tym samym miejscu. Ma ochotę 
 
 ## Zastosowane technologie
 > Any application that can be written in JavaScript, will eventually be written in JavaScript.”
-Jeff Atwood
+~ Jeff Atwood
+
 Poważnie podchodząc do powyższego prawa, nasze preferencje językowe obracaliśmy wokół JavaScript. Interfejs użytkownika stworzyliśmy przy pomocy biblioteki React. Skorzystaliśmy z podejścia „server less”, a precyzyjniej z usługi Firebase, która umożliwiła nam ukrycie logiki aplikacji w funkcjach chmurowych, a dane w bazie danych czasu rzeczywistego.
 
 ## Wykorzystane API
